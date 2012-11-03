@@ -1,6 +1,6 @@
 # Default settings for a gmail account
 
-Tinder::Application.configure do
+DPGifts::Application.configure do
     ENV['RAILS_ENV'] == "test" ? config.action_mailer.delivery_method = :test : config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :address => "smtp.gmail.com",

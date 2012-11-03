@@ -1,4 +1,4 @@
-Tinder::Application.routes.draw do
+DPGifts::Application.routes.draw do
     match '/auth/:provider/callback' => 'authentications#create'
 
     resources :authentications
