@@ -16,6 +16,7 @@ en:
     edit_photo:             "Update Photo"
     create_comment:         "Post my comment"
     edit_comment:           "Update my comment"
+    update_profile:         "Update my profile"
   flash:
     signed_in:              "Signed in successfully"
     post_created:           "Post was successfully created."
@@ -26,6 +27,7 @@ en:
     comment_created:        "Comment was successfully created."
     comment_updated:        "Comment was successfully updated."
     comment_problem:        "There was a problem saving your comment."
+    profile_updated:        "Profile was successfully updated."
   errors:
     post_publish:           "There was a problem publishing your post."
   links:

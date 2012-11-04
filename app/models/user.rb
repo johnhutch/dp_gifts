@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
     has_many :photos
     has_one :profile
 
+    before_create :build_profile
+
     # Include default devise modules. Others available are:
     # :token_authenticatable, :lockable, :timeoutable and :activatable
     devise :database_authenticatable, :registerable, :omniauthable,

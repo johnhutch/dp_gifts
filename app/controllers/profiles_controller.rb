@@ -60,10 +60,10 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to edit_user_registration_path, notice: t('flash.profile_updated') }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_user_registration_path }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
