@@ -25,6 +25,7 @@ DPGifts::Application.routes.draw do
     # content routes
     match "/admin" => "contents#admin", :as => :admin
     match "/contact" => "contents#contact", :as => :contact
+    match "/dashboard" => "contents#dashboard", :as => :dashboard
 
     root :to => "contents#front"
 
