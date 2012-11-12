@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     has_one :profile
 
     before_create :build_profile
+    after_create :set_initial_roles
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :lockable, :timeoutable and :activatable
@@ -51,5 +52,13 @@ class User < ActiveRecord::Base
         else
             super
         end
+    end
+
+    private
+    def set_initial_roles
+        self.roles << Role.find_by_name("nobody")
+        self.roles << Role.find_by_name("commenter")
+        self.roles << Role.find_by_name("author")
+        self.roles << Role.find_by_name("uploader")
     end
 end

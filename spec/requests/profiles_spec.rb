@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Profiles" do
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryGirl.create(:nobody)}
 
   describe "GET /profiles" do
     it "creates a new profile for a new user" do
