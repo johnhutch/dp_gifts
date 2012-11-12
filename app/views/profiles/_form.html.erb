@@ -11,28 +11,30 @@
     </div>
   <% end %>
 
-  <div class="column">
-    <div class="field">
-      <%= f.label :address, "Mailing Address" %>
-      <%= f.text_area :address %>
+  <div class="row">
+    <div class="span4">
+      <div class="field">
+        <%= f.label :address, "Mailing Address" %>
+        <%= f.text_area :address %>
+      </div>
+      <div class="field">
+        <%= f.label :amazon_wishlist %>
+        <%= f.text_field :amazon_wishlist %>
+      </div>
+      <div class="field">
+        <%= f.label :twitter, "Twitter Account" %>
+        <%= f.text_field :twitter %>
+      </div>
+      <div class="field">
+        <%= f.label :website, "Your Website" %>
+        <%= f.text_field :website %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :amazon_wishlist %>
-      <%= f.text_field :amazon_wishlist %>
-    </div>
-    <div class="field">
-      <%= f.label :twitter, "Twitter Account" %>
-      <%= f.text_field :twitter %>
-    </div>
-    <div class="field">
-      <%= f.label :website, "Your Website" %>
-      <%= f.text_field :website %>
-    </div>
-  </div>
-  <div class="column">
-    <div class="field">
-      <%= f.label :bio, "Short Bio" %>
-      <%= f.text_area :bio %>
+    <div class="span4">
+      <div class="field">
+        <%= f.label :bio, "Short Bio" %>
+        <%= f.text_area :bio %>
+      </div>
     </div>
   </div>
   <div class="actions">

@@ -1,0 +1,6 @@
+<h2>Your Dashboard</h2>
+
+<% if current_user.profile_incomplete? %>
+   <p>It seems you haven't filled out your profile yet. Please do so now so your gifter can get a better idea of what to get you!</p>
+   <p><%= link_to "Edit My Profile", edit_user_registration_path, :class => "btn" %></p> 
+<% end %>

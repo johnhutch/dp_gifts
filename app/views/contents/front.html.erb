@@ -2,9 +2,9 @@
   <h1>Sign up. Get Matched. Give &amp; Receive Gifts.</h1>
   <p>Want to get to know your fellow Double Primers? Enjoy giving and receiving gifts? Lucky you! Double Prime gifts is a company-wide gift exchange, modeled after Reddit Gifts. Just sign up to get started.</p>
   <p><% if user_signed_in? %>
-    <%= link_to "Get Started &raquo;".html_safe, new_user_session_path, :class => "btn btn-primary btn-large" %> 
-  <% else %>
     <%= link_to "Get Started &raquo;".html_safe, dashboard_path, :class => "btn btn-primary btn-large" %> 
+  <% else %>
+    <%= link_to "Get Started &raquo;".html_safe, new_user_session_path, :class => "btn btn-primary btn-large" %> 
   <% end %>
   <a class="btn btn-large">Learn more &raquo;</a></p>
 </div>

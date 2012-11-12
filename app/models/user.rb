@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     # Setup accessible (or protected) attributes for your model
     attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :remember_me
 
+    def profile_incomplete?
+      self.profile.address.nil? && self.profile.bio.nil?
+    end
+
     # Accessor function for retrieving a user's roles
     def role?(role)
         return !!self.roles.find_by_name(role.to_s)

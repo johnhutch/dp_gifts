@@ -14,7 +14,7 @@ class Ability
 
   def nobody
     can :read, [Content, User, Post, Photo, Comment]
-    can [:front, :contact], Content
+    can [:front, :dashboard, :contact], Content
   end
 
   def commenter
