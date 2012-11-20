@@ -19,6 +19,10 @@ $dark_boxshadow: 0px 2px 4px #333;
 $light_boxshadow: 0px 2px 4px #ccc;
 $under_shadow: 0px 8px 6px -6px #999;
 
+$link_color: #05b0dc;
+$active_color: #045e9a;
+
+
 #notice { color: green; }
 .field_with_errors { padding: 2px; background-color: red; display: table; }
 #error_explanation { border: 2px solid red; padding: 7px; padding-bottom: 0; margin-bottom: 20px; background-color: #f0f0f0;
@@ -39,8 +43,30 @@ section#vote { text-align: center; margin-top: 1em;
     }
 }
 
-nav {min-height: 50px;}
-.navbar-inverse .brand {color: #555;}
+nav {min-height: 50px; }
+nav#nav a, {color: $link_color; }
+nav#nav li.active a, {color: $active_color; }
+nav#nav .caret {border-top-color: $link_color; border-bottom-color: $link_color; color: $link_color;}
+nav#nav .brand {color: $link_color; font-weight: normal; text-transform: uppercase;}
+nav#nav .brand span {color: $active_color;}
+
+footer {background-color: #153359; color: #eee; padding: 20px 0;}
+
+/***** FRONT PAGE *******/
+
+body#front {background: #04afdc; /* Old browsers */
+  background: -moz-linear-gradient(left,  #04afdc 0%, #63d3f0 26%, #63d3f0 74%, #04afdc 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#04afdc), color-stop(26%,#63d3f0), color-stop(74%,#63d3f0), color-stop(100%,#04afdc)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #04afdc 0%,#63d3f0 26%,#63d3f0 74%,#04afdc 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #04afdc 0%,#63d3f0 26%,#63d3f0 74%,#04afdc 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #04afdc 0%,#63d3f0 26%,#63d3f0 74%,#04afdc 100%); /* IE10+ */
+  background: linear-gradient(to right,  #04afdc 0%,#63d3f0 26%,#63d3f0 74%,#04afdc 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04afdc', endColorstr='#04afdc',GradientType=1 ); /* IE6-9 */
+}
+
+body#front .hero-unit {position:relative; background: transparent; @include border-radius(3px); color: #eee;}
+body#front .hero-unit .border-overlay {position: absolute; top: -2px; right: -2px; width: 100%; height: 100%; z-index: -1; @include border-radius(3px); border: 5px solid #78d5ed; overflow: hidden; text-align: right; background-color: #15385e;}
+
 
 /*** authentications ***/
 .authentication { float: left; background-color: #EEE; border: solid 1px #999; padding: 5px 10px; position: relative; margin-right: 10px; @include border-radius(8px); 
@@ -80,4 +106,5 @@ ul#games {margin: 0; padding: 0; list-style-type: none;
     }
 }
 
-#profile textarea#profile_bio {height: 18em;}
+#profile textarea#profile_bio,
+#profile textarea#profile_likes {height: 12em;}

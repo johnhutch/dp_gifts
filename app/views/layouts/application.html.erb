@@ -22,8 +22,8 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-    <nav class="clearfix" role="navigation">
-        <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav id="nav" class="clearfix" role="navigation">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -31,33 +31,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/" role="banner">DP Gifts</a>
+                    <a class="brand" href="/" role="banner"><span>DP</span> Gifts</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="/">Home</a></li>
                             <li class="dropdown">
                                 <a href="#about" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="">Copyright</a></li>
-                                    <li><a href="">Privacy Policy</a></li>
-                                    <li><a href="">Terms and Conditions</a></li>
+                                    <li><%= link_to "How It Works", how_it_works_path %>
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
                             </li>
                             <% if user_signed_in? %>
-                              <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Do Things<b class="caret"></b></a>
-                                  <ul class="dropdown-menu">
-                                      <% if current_user.role? :admin %>
-                                      <li class="divider"></li>
-                                      <li class="nav-header">Admin</li>
-                                      <li><%= link_to "New blog post", new_post_path %></li>
-                                      <li><%= link_to "Upload a photo", new_photo_path %></li>
-                                      <li><a href="#">Separated link</a></li>
-                                      <li><a href="#">One more separated link</a></li>
-                                      <% end %>
-                                  </ul>
-                              </li>
                               <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
                                   <ul class="dropdown-menu"> 
@@ -82,12 +67,13 @@
             <%= alert_block %>
             <%= yield %>
         </section>
-
-        <footer role="contentinfo">
-            <p>&copy; Double Prime 2012</p>
-        </footer>
     </div> <!--! end of #container -->
 
+    <footer role="contentinfo">
+      <div class="container">
+        <p>&copy; Double Prime 2012</p>
+      </div>
+    </footer>
 
 <%= javascript_include_tag "application" %>
 <%= yield :scripts %>
