@@ -1,29 +1,28 @@
 <div class="hero-unit">
-  <h1>Sign up. Get Matched. Give &amp; Receive Gifts.</h1>
+  <h1>Sign Up. Get Matched. Give &amp; Receive Gifts.</h1>
   <p>Want to get to know your fellow Double Primers? Enjoy giving and receiving gifts? Lucky you! Double Prime gifts is a company-wide gift exchange, modeled after Reddit Gifts. Just sign up to get started.</p>
   <p><% if user_signed_in? %>
     <%= link_to "Get Started &raquo;".html_safe, dashboard_path, :class => "btn btn-primary btn-large" %> 
   <% else %>
     <%= link_to "Get Started &raquo;".html_safe, new_user_session_path, :class => "btn btn-primary btn-large" %> 
   <% end %>
-  <a class="btn btn-large">How It Works &raquo;</a></p>
+  <a href="/how_it_works" class="btn btn-large">How It Works &raquo;</a></p>
 </div>
 
 <!-- Example row of columns -->
 <div class="row">
-  <div class="span3">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+  <div class="span4">
+    <h2>The Gift Blog</h2>
+    <p>Check back here later after a few gifts have been received to see what sort of loot everyone got.</p>
+    <p><a class="btn" href="#">View blog &raquo;</a></p>
   </div>
-  <div class="span3">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+  <div class="span4">
+    <h2>The Rules</h2>
+    <p>All you need to do is sign up and send a gift to your match valued at no less than $20 by 12/21/2012</p>
+    <p><a class="btn" href="#">Real the Rules &raquo;</a></p>
   </div>
-  <div class="span3">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+  <div class="span4">
+    <h2>TL;DR</h2>
+    <p>For the lazy: watch a short screencast on how it works:</p>
   </div>
 </div>
