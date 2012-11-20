@@ -8,8 +8,9 @@ describe "Profiles" do
       login(user)
       visit edit_user_registration_path
 
+      fill_in "Tell us a bit about yourself.", :with => "Hi there. Lemme tell you about myself."
+      fill_in "Things I like and things I'm allergic to:", :with => "I like all kinds of things."
       fill_in "Mailing Address", :with => "21 jump st.\nGenorocity, Denial 12345\nDonation"
-      fill_in "Short Bio", :with => "Hi there. Lemme tell you about myself."
       fill_in "Amazon wishlist", :with => "http://www.amazon.com/blah"
       fill_in "Twitter Account", :with => "johnhutch"
       fill_in "Your Website", :with => "http://www.johnhutch.com"
