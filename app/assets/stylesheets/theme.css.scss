@@ -15,6 +15,13 @@ $light_letterpress: 0 2px 3px #fff;
 @mixin box-shadow($shadows) {
     -webkit-box-shadow: $shadows; -moz-box-shadow: $shadows; box-shadow: $shadows;
 }
+
+@mixin gradient($from, $to) {
+  background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background: -moz-linear-gradient(top,  $from, $to);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+
 $dark_boxshadow: 0px 2px 4px #333;
 $light_boxshadow: 0px 2px 4px #ccc;
 $under_shadow: 0px 8px 6px -6px #999;
@@ -22,7 +29,7 @@ $under_shadow: 0px 8px 6px -6px #999;
 $link_color: #05b0dc;
 $active_color: #045e9a;
 
-
+body { padding-bottom: 80px;}
 #notice { color: green; }
 .field_with_errors { padding: 2px; background-color: red; display: table; }
 #error_explanation { border: 2px solid red; padding: 7px; padding-bottom: 0; margin-bottom: 20px; background-color: #f0f0f0;
@@ -51,6 +58,8 @@ nav#nav .brand {color: $link_color; font-weight: normal; text-transform: upperca
 nav#nav .brand span {color: $active_color;}
 
 footer {background-color: #153359; color: #eee; padding: 20px 0; position: fixed; bottom: 0; left: 0; width: 100%;}
+footer img.logo {float: right;}
+footer p {padding-top: .6em;}
 
 /***** FRONT PAGE *******/
 
@@ -64,9 +73,27 @@ body#front {background: #04afdc; /* Old browsers */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04afdc', endColorstr='#04afdc',GradientType=1 ); /* IE6-9 */
 }
 
-body#front .hero-unit {position:relative; background: transparent; @include border-radius(3px); color: #eee;}
-body#front .hero-unit .border-overlay {position: absolute; top: -2px; right: -2px; width: 100%; height: 100%; z-index: -1; @include border-radius(3px); border: 5px solid #78d5ed; overflow: hidden; text-align: right; background-color: #15385e;}
+body#front .hero-unit {position:relative; background: transparent; @include border-radius(3px); color: #eee; padding: 30px;}
+body#front .hero-unit .border-overlay {position: absolute; top: -2px; right: -2px; width: 100%; height: 100%; z-index: -1; @include border-radius(3px); border: 5px solid #78d5ed; overflow: hidden; text-align: right; background-color: #15385e; @include gradient(#15385e, #186690); }
+body#front .hero-unit h1 {font-weight: normal; font-size: 2em; letter-spacing: -1px; width: 50%; line-height: 1.4em; margin-bottom: .5em;}
+body#front .hero-unit h1 strong {clear: left;display: block;}
+body#front .hero-unit p {font-size: 1em; width: 45%; line-height: 1.6em; margin-bottom: 1.8em;}
+body#front .row p {@include text-shadow(1px 2px 3px #9be1f3); font-size: 1.2em; line-height: 1.4em; }
+body#front .row h1, body#front .row h2, body#front .row h3, {@include text-shadow(1px 2px 3px #9be1f3); }
 
+@media only screen and (min-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+  /* line 9, ../../app/assets/stylesheets/mediaqueries.css.scss */
+  #container {
+    width: 480px;
+    text-align: left;
+    margin: 20px auto;
+  }
+}
+@media only screen and (max-width: 779px) {
+  body#front .hero-unit .border-overlay img {display: none;}
+  body#front .hero-unit h1, body#front .hero-unit p {width: auto;}
+}
 
 /*** authentications ***/
 .authentication { float: left; background-color: #EEE; border: solid 1px #999; padding: 5px 10px; position: relative; margin-right: 10px; @include border-radius(8px); 
