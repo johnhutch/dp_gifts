@@ -57,4 +57,13 @@ DPGifts::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              Settings.mail.address
+    port:                 Settings.mail.port
+    user_name:            Settings.mail.user_name
+    password:             Settings.mail.password
+    authentication:       Settings.mail.authentication
+    enable_starttls_auto: true  }
 end
