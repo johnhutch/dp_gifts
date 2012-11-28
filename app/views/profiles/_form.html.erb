@@ -15,17 +15,17 @@
     <div class="span4">
       <div class="field">
         <%= f.label :bio, "Tell us a bit about yourself." %>
-        <%= f.text_area :bio %>
+        <%= f.text_area :bio, :required => 'required' %>
       </div>
       <div class="field">
         <%= f.label :likes, "Things I like and things I'm allergic to:" %>
-        <%= f.text_area :likes %>
+        <%= f.text_area :likes, :required => 'required' %>
       </div>
     </div>
     <div class="span4">
       <div class="field">
         <%= f.label :address, "Mailing Address" %>
-        <%= f.text_area :address %>
+        <%= f.text_area :address, :required => 'required' %>
       </div>
       <div class="field">
         <%= f.label :amazon_wishlist %>
