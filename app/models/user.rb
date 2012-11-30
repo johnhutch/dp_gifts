@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     has_many :posts
     has_many :photos
     has_one :profile
+    has_and_belongs_to_many :exchanges
 
     before_create :build_profile
     after_create :set_initial_roles
@@ -56,6 +57,10 @@ class User < ActiveRecord::Base
         else
             super
         end
+    end
+
+    def matchup
+
     end
 
     private

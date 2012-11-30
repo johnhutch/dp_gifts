@@ -4,3 +4,23 @@
    <p>It seems you haven't filled out your profile yet. Please do so now so your gifter can get a better idea of what to get you!</p>
    <p><%= link_to "Edit My Profile", edit_user_registration_path, :class => "btn" %></p> 
 <% end %>
+
+<section id="gift_exchanges">
+  <h3>Your gift exchanges</h3>
+  <% for exchange in current_user.exchanges.all %>
+    <div class="exchange">
+      <h4><%= exchange.name %></h4>
+      <p><%= exchange.summary %></p>
+    </div>a
+  <% end %>
+</section>
+
+<section id="new_exchanges">
+  <h3>Here are some other gift exchanges you can sign up for</h3>
+  <% for exchange in Exchange.all %>
+    <div class="exchange">
+      <h4><%= exchange.name %></h4>
+      <p><%= exchange.summary %></p>
+    </div>
+  <% end %>
+</section>
