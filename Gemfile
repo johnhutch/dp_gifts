@@ -25,6 +25,7 @@ gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 gem 'rails_config'
 gem 'stamp'
+gem 'state_machine'
 
 group :development, :test do
     gem 'sqlite3'

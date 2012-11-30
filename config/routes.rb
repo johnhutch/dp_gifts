@@ -1,4 +1,7 @@
 DPGifts::Application.routes.draw do
+  resources :exchanges
+
+
   resources :profiles
 
     match '/auth/:provider/callback' => 'authentications#create'
