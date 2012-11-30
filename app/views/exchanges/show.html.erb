@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @exchange.name %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @exchange.state %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @exchange.description %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @exchange.summary %>
+</p>
+
+
+<%= link_to 'Edit', edit_exchange_path(@exchange) %> |
+<%= link_to 'Back', exchanges_path %>
