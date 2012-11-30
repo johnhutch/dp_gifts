@@ -23,6 +23,22 @@ describe "Exchanges" do
       click_button "Create Exchange"
       page.should have_content ("successfully created")
       page.should have_content ("The new DP exchange")
+      page.should have_content ("This gift exchange is open for signups")
+    end
+  end
+
+  describe "GET /exchange/:id/trigger_matchups" do
+    it "switches the exchange state to matched" do
+    end
+  end
+
+  describe "GET /exchange/:id/close_exchange" do
+    it "switches the exchange state to closed" do
+    end
+  end
+
+  describe "GET /exchange/:id/sign_up" do
+    it "signs a user up for an exchange" do
     end
   end
 end

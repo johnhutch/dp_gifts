@@ -9,7 +9,21 @@ class Exchange < ActiveRecord::Base
     after_transition :signup => :matched, :do => :match_and_notify
     after_transition :matched => :closed, :do => :open_blog_and_notify
 
-    state :signup, :matched, :closed
+    state :signup do
+      def state_description
+        "This gift exchange is open for signups!"
+      end
+    end
+    state :matched do
+      def state_description
+        "Signups for this gift exchange are closed. Stay tuned as giftees post their gifts!"
+      end
+    end
+    state :closed do
+      def state_description
+        "This gift exchange is now close. Check the blog for pictures of some of the awesome gifts people received!"
+      end
+    end
   end
 
   def match_and_notify
