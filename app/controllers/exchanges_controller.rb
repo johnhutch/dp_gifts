@@ -21,6 +21,38 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def sign_up
+    @exchange = Exchange.find(params[:id])
+    current_user.exchanges << @exchange
+
+    respond_to do |format|
+      if current_user.save
+        format.html { redirect_to dashboard_path, notice: "You have signed up for #{@exchange.name}." }
+      else
+        format.html { redirect_to dashboard_path, notice: "We're sorry. There was a problem signing you up for #{@exchange.name}." }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def trigger_matchups
+    @exchange = Exchange.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @exchange }
+    end
+  end
+
+  def close_exchange
+    @exchange = Exchange.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @exchange }
+    end
+  end
+
   # GET /exchanges/new
   # GET /exchanges/new.json
   def new

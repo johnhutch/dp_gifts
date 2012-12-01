@@ -1,8 +1,14 @@
 DPGifts::Application.routes.draw do
-  resources :exchanges
 
+    resources :exchanges do 
+        member do 
+            get :sign_up
+            get :trigger_matchups
+            get :close_exchange
+        end
+    end
 
-  resources :profiles
+    resources :profiles
 
     match '/auth/:provider/callback' => 'authentications#create'
 

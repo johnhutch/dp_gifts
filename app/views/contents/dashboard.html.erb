@@ -18,9 +18,12 @@
 <section id="new_exchanges">
   <h3>Here are some other gift exchanges you can sign up for</h3>
   <% for exchange in Exchange.all %>
-    <div class="exchange">
-      <h4><%= exchange.name %></h4>
-      <p><%= exchange.summary %></p>
-    </div>
+    <% unless current_user.exchanges.include?(exchange) %>
+      <div class="exchange">
+        <h4><%= exchange.name %></h4>
+        <p><%= exchange.summary %></p>
+        <%= link_to "Sign up for #{exchange.name}", sign_up_exchange_path(exchange), :class => "btn btn-mini" %>
+      </div>
+    <% end %>
   <% end %>
 </section>

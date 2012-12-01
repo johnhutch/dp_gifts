@@ -1,15 +1,11 @@
 require 'spec_helper'
 
 describe "Exchanges" do
+  let(:user) {FactoryGirl.create(:nobody)}
   let(:admin) {FactoryGirl.create(:admin)}
-
-  describe "GET /exchanges" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get exchanges_path
-      response.status.should be(200)
-    end
-  end
+  let(:exchange) {FactoryGirl.create(:exchange)}
+  let(:exchange1) {FactoryGirl.create(:exchange)}
+  let(:exchange2) {FactoryGirl.create(:exchange)}
 
   describe "POST /exchange" do
     it "lets an admin create a new exchange" do
@@ -39,6 +35,13 @@ describe "Exchanges" do
 
   describe "GET /exchange/:id/sign_up" do
     it "signs a user up for an exchange" do
+      login(user)
+      exchange
+
+      visit dashboard_path
+
+      click_link "Sign up for #{exchange.name}"
+      page.should have_content("You have signed up for #{exchange.name}")
     end
   end
 end

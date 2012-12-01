@@ -104,4 +104,14 @@ FactoryGirl.define do
     caption
     image { Rack::Test::UploadedFile.new("#{Rails.root}/spec/samples/mark.png", 'image/png', true) }
   end
+
+  sequence(:exchange_name) { |n| "Gift Exchange #{n}"}
+  sequence(:summary) { |n| "This is the exchange summary #{n}"}
+  sequence(:description) { |n| "This is the gift exchange description n}"}
+
+  factory :exchange do 
+    name { generate(:exchange_name) }
+    summary
+    description
+  end
 end
