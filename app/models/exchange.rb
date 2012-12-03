@@ -3,7 +3,7 @@ class Exchange < ActiveRecord::Base
 
   attr_accessible :description, :name, :state, :summary
 
-  validates_presence_of :name, :description, :summary
+  validates_presence_of :name, :summary
 
   state_machine :initial => :signup do
     after_transition :signup => :matched, :do => :notify_matches

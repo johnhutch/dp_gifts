@@ -12,7 +12,7 @@
     <% for exchange in current_user.exchanges %>
       <div class="exchange">
         <h4><%= exchange.name %></h4>
-        <p><%= exchange.summary %></p>
+        <p><%= markdown exchange.summary %></p>
         <h5><%= exchange.call_to_action %></h5>
         <% if exchange.state == "signup" %>
           <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
@@ -33,7 +33,7 @@
     <% for exchange in current_user.potential_exchanges %>
       <div class="exchange">
         <h4><%= exchange.name %></h4>
-        <p><%= exchange.summary %></p>
+        <p><%= markdown exchange.summary %></p>
         <%= link_to "Sign up for #{exchange.name}", sign_up_exchange_path(exchange), :class => "btn btn-mini btn-success" %>
       </div>
     <% end %>

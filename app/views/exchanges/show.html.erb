@@ -2,8 +2,7 @@
   <header>
     <h2><%= @exchange.name %></h2>
     <p><small>This exchange is: <%= @exchange.state_description %></small></p>
-    <p><%= markdown @exchange.summary %></p>
   </header>
+  <%= markdown @exchange.summary %>
 
-  <%= markdown @exchange.description %>
 </section>
