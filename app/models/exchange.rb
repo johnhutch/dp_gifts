@@ -13,17 +13,29 @@ class Exchange < ActiveRecord::Base
       def state_description
         "This gift exchange is open for signups!"
       end
+
+      def call_to_action
+        "Stay tuned! You should received your matchup within a few days."
+      end
     end
 
     state :matched do
       def state_description
         "Signups for this gift exchange are closed. Stay tuned as giftees post their gifts!"
       end
+
+      def call_to_action
+        "You have received your match! Go read up on your giftee to figure out what to get them."
+      end
     end
 
     state :closed do
       def state_description
         "This gift exchange is now close. Check the blog for pictures of some of the awesome gifts people received!"
+      end
+
+      def call_to_action
+        "This gift exchange is now close. Have you posted pics of your gift yet?"
       end
     end
 
