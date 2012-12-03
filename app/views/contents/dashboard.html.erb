@@ -1,29 +1,40 @@
-<h2>Your Dashboard</h2>
+<h2>Your Gift Exchange Dashboard</h2>
 
 <% if current_user.profile_incomplete? %>
    <p>It seems you haven't filled out your profile yet. Please do so now so your gifter can get a better idea of what to get you!</p>
    <p><%= link_to "Edit My Profile", edit_user_registration_path, :class => "btn" %></p> 
 <% end %>
 
-<section id="gift_exchanges">
+<div class="row">
+<section id="gift_exchanges" class="span-6">
   <h3>Your gift exchanges</h3>
-  <% for exchange in current_user.exchanges.all %>
-    <div class="exchange">
-      <h4><%= exchange.name %></h4>
-      <p><%= exchange.summary %></p>
-    </div>a
-  <% end %>
-</section>
-
-<section id="new_exchanges">
-  <h3>Here are some other gift exchanges you can sign up for</h3>
-  <% for exchange in Exchange.all %>
-    <% unless current_user.exchanges.include?(exchange) %>
+  <% unless current_user.exchanges.empty? %>
+    <% for exchange in current_user.exchanges %>
       <div class="exchange">
         <h4><%= exchange.name %></h4>
         <p><%= exchange.summary %></p>
-        <%= link_to "Sign up for #{exchange.name}", sign_up_exchange_path(exchange), :class => "btn btn-mini" %>
+        <% if exchange.state == "signup" %>
+          <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
+        <% end %>
       </div>
     <% end %>
+  <% else %>
+    <p>You have not signed up for any exchanges!</p>
   <% end %>
 </section>
+
+<% unless current_user.potential_exchanges.empty? %>
+  <section id="new_exchanges" class="span-6">
+    <h3>Here are some other gift exchanges you can sign up for</h3>
+    <% for exchange in current_user.potential_exchanges %>
+      <div class="exchange">
+        <h4><%= exchange.name %></h4>
+        <p><%= exchange.summary %></p>
+        <%= link_to "Sign up for #{exchange.name}", sign_up_exchange_path(exchange), :class => "btn btn-mini btn-success" %>
+      </div>
+    <% end %>
+  </section>
+<% else %>
+  <p>Looks like there aren't any other exchanges you can sign up for at this time.</p>
+<% end %>
+</div>

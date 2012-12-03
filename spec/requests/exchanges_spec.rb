@@ -59,4 +59,16 @@ describe "Exchanges" do
       page.should have_content("You have signed up for #{exchange.name}")
     end
   end
+
+  describe "GET /exchange/:id/quit" do
+    it "signs a user up for an exchange" do
+      login(user)
+      user.exchanges << exchange
+
+      visit dashboard_path
+
+      click_link "Quit this exchange"
+      page.should have_content("You have quit #{exchange.name}")
+    end
+  end
 end

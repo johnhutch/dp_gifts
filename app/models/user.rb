@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
       self.profile.address.nil? && self.profile.bio.nil?
     end
 
+    def potential_exchanges
+      potential_exchanges = Exchange.with_state(:signup) - self.exchanges
+    end
+
     # Accessor function for retrieving a user's roles
     def role?(role)
         return !!self.roles.find_by_name(role.to_s)

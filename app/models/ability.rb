@@ -7,7 +7,7 @@ class Ability
     @user.roles.each { |role| send role.name }
 
     if @user.roles.size == 0  # for guests without roles
-      can :read, [Content, User, Post, Photo, Comment]
+      can :read, [Content, User, Post, Photo, Comment, Exchange]
       can [:front, :contact, :how_it_works], Content
     end
   end
@@ -15,7 +15,7 @@ class Ability
   def nobody
     can :read, [Content, User, Post, Photo, Comment, Exchange]
     can [:front, :dashboard, :contact, :how_it_works], Content
-    can [:sign_up], Exchange
+    can [:sign_up, :quit], Exchange
   end
 
   def commenter

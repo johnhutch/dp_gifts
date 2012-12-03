@@ -29,8 +29,23 @@ class ExchangesController < ApplicationController
 
     respond_to do |format|
       if current_user.save
-        format.html { redirect_to dashboard_path, notice: "You have signed up for #{@exchange.name}." } else
+        format.html { redirect_to dashboard_path, notice: "You have signed up for #{@exchange.name}." } 
+      else
         format.html { redirect_to dashboard_path, notice: "We're sorry. There was a problem signing you up for #{@exchange.name}." }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def quit
+    @exchange = Exchange.find(params[:id])
+    current_user.exchanges.delete(@exchange)
+
+    respond_to do |format|
+      if current_user.save
+        format.html { redirect_to dashboard_path, notice: "You have quit #{@exchange.name}. You can always sign up again later if you change your mind." }
+      else
+        format.html { redirect_to dashboard_path, notice: "We're sorry. There was a problem quitting #{@exchange.name}." }
         format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end
