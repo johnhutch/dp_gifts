@@ -4,7 +4,7 @@ DPGifts::Application.routes.draw do
         member do 
             get :sign_up
             get :trigger_matchups
-            get :close_exchange
+            get :close
         end
     end
 

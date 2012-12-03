@@ -6,35 +6,42 @@ class Exchange < ActiveRecord::Base
   validates_presence_of :name, :description, :summary
 
   state_machine :initial => :signup do
-    after_transition :signup => :matched, :do => :match_and_notify
-    after_transition :matched => :closed, :do => :open_blog_and_notify
+    after_transition :signup => :matched, :do => :notify_matches
+    after_transition :matched => :closed, :do => :notify_closure
 
     state :signup do
       def state_description
         "This gift exchange is open for signups!"
       end
     end
+
     state :matched do
       def state_description
         "Signups for this gift exchange are closed. Stay tuned as giftees post their gifts!"
       end
     end
+
     state :closed do
       def state_description
         "This gift exchange is now close. Check the blog for pictures of some of the awesome gifts people received!"
       end
     end
-  end
 
-  def match_and_notify
-    for user in self.users
-      user.matchup
+    event :match_and_notify do
+      transition :signup => :matched
+    end
+
+    event :close do
+      transition :matched => :closed
     end
   end
 
-  def open_blog_and_notify
-    for user in self.users
-    end
+  private
+
+  def notify_matches
+  end
+
+  def notify_closure
   end
 
 end

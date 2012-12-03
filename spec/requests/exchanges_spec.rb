@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe "Exchanges" do
   let(:user) {FactoryGirl.create(:nobody)}
+  let(:user2) {FactoryGirl.create(:nobody)}
+  let(:user3) {FactoryGirl.create(:nobody)}
+  let(:user4) {FactoryGirl.create(:nobody)}
+  let(:user5) {FactoryGirl.create(:nobody)}
+  let(:user6) {FactoryGirl.create(:nobody)}
   let(:admin) {FactoryGirl.create(:admin)}
   let(:exchange) {FactoryGirl.create(:exchange)}
   let(:exchange1) {FactoryGirl.create(:exchange)}
@@ -25,6 +30,16 @@ describe "Exchanges" do
 
   describe "GET /exchange/:id/trigger_matchups" do
     it "switches the exchange state to matched" do
+      user.exchanges << exchange
+      user2.exchanges << exchange
+      user3.exchanges << exchange
+      user4.exchanges << exchange
+      user5.exchanges << exchange
+      user6.exchanges << exchange
+      login(admin)
+
+      visit admin_path
+      click_link "Run matchups and notify users"
     end
   end
 

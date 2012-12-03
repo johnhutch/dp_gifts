@@ -1,3 +1,25 @@
 <h2>Admin</h2>
 
 <%= link_to "Create a new exchange", new_exchange_path %>
+
+<h3>Exchanges</h3>
+<h4>New</h4>
+<% for exchange in Exchange.with_state(:signup) %>
+  <div class="exchange">
+    <%= link_to exchange.name, exchange %> <%= link_to "Run matchups and notify users", trigger_matchups_exchange_path(exchange) %>
+  </div>
+<% end %>
+
+<h4>Matched</h4>
+<% for exchange in Exchange.with_state(:matched) %>
+  <div class="exchange">
+    <%= link_to exchange.name, exchange %> <%= link_to "Close matchup", close_exchange_path(exchange) %>
+  </div>
+<% end %>
+
+<h4>Closed</h4>
+<% for exchange in Exchange.with_state(:closed) %>
+  <div class="exchange">
+    <%= link_to exchange.name, exchange %> 
+  </div>
+<% end %>

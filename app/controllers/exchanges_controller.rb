@@ -1,4 +1,6 @@
 class ExchangesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /exchanges
   # GET /exchanges.json
   def index
@@ -27,8 +29,7 @@ class ExchangesController < ApplicationController
 
     respond_to do |format|
       if current_user.save
-        format.html { redirect_to dashboard_path, notice: "You have signed up for #{@exchange.name}." }
-      else
+        format.html { redirect_to dashboard_path, notice: "You have signed up for #{@exchange.name}." } else
         format.html { redirect_to dashboard_path, notice: "We're sorry. There was a problem signing you up for #{@exchange.name}." }
         format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
@@ -37,18 +38,20 @@ class ExchangesController < ApplicationController
 
   def trigger_matchups
     @exchange = Exchange.find(params[:id])
+    @exchange.match_and_notify
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to admin_path, notice: "You have triggered #{@exchange.name} matchups and notified users." }
       format.json { render json: @exchange }
     end
   end
 
-  def close_exchange
+  def close
     @exchange = Exchange.find(params[:id])
+    @exchange.close
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to admin_path, notice: "You have closed #{@exchange.name} and notified users." }
       format.json { render json: @exchange }
     end
   end
