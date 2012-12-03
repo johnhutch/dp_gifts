@@ -20,10 +20,16 @@
   <div class="span4">
     <h2>The Rules</h2>
     <p>All you need to do is sign up and send a gift to your match valued at no less than $20 by 12/21/2012</p>
-    <p><a class="btn" href="#">Read the Rules &raquo;</a></p>
   </div>
   <div class="span4">
-    <h2>TL;DR</h2>
-    <p>For the lazy: watch a short screencast on how it works:</p>
+    <h2>Sign up for an exchange</h2>
+    <p>Want to get started?  
+    <% if user_signed_in? %>
+      Head to your dashboard and join the exchange.</p>
+      <p><%= link_to "Join the gift exchange &raquo;".html_safe, dashboard_path, :class => "btn" %></p>
+    <% else %>
+      Sign up now and join the exchange.</p>
+      <p><%= link_to "Sign Up &raquo;".html_safe, new_user_session_path, :class => "btn" %></p>
+    <% end %>
   </div>
 </div>
