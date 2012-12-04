@@ -14,11 +14,11 @@
   <div class="row">
     <div class="span4">
       <div class="field">
-        <%= f.label :bio, "Tell us a bit about yourself." %>
+        <%= f.label :bio, "Tell us a bit about yourself. Anything that might help your match get you a great gift." %>
         <%= f.text_area :bio, :required => 'required' %>
       </div>
       <div class="field">
-        <%= f.label :likes, "Things I like and things I'm allergic to:" %>
+        <%= f.label :likes, "What are some things you like? What are some things you dislike? What are some things you're allergic to?" %>
         <%= f.text_area :likes, :required => 'required' %>
       </div>
     </div>
@@ -28,16 +28,16 @@
         <%= f.text_area :address, :required => 'required' %>
       </div>
       <div class="field">
-        <%= f.label :amazon_wishlist %>
+        <%= f.label :amazon_wishlist, "Do you have a wishlist on amazon.com? Enter it here." %>
         <%= f.text_field :amazon_wishlist %>
       </div>
       <div class="field">
-        <%= f.label :twitter, "Twitter Account" %>
-        <%= f.text_field :twitter %>
+        <%= f.label :twitter, "Do you have a twitter account? It could help your match learn more about you." %>
+        <%= f.text_field :twitter, :placeholder => "MyUsername" %>
       </div>
       <div class="field">
-        <%= f.label :website, "Your Website" %>
-        <%= f.text_field :website %>
+        <%= f.label :website, "Do you have a website?" %>
+        <%= f.text_field :website, :placeholder => "http://" %>
       </div>
     </div>
   </div>

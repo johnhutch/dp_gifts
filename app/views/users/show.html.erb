@@ -1,10 +1,20 @@
 <h2><%= @user.name %></h2>
 <% @page_title = @user.name %>
 
-<% unless @user.profile.nil? %>
-  <h5>Address</h5>
-  <%= @user.profile.address %>
+<h5>Address</h5>
+<%= @user.profile.address rescue "Not filled out" %>
 
-  <h5>Bio:</h5>
-  <%= @user.profile.bio %>
-<% end %>
+<h5>Bio:</h5>
+<%= @user.profile.bio rescue "Not filled out" %>
+
+<h5>Things I like, dislike, and am maybe I'm allergic to:</h5>
+<%= @user.profile.likes rescue "Not filled out" %>
+
+<h6>Amazon.com Wishlist</h6>
+<%= @user.profile.amazon_wishlist rescue "I don't have an amazon wishlist" %>
+
+<h6>Twitter:</h6>
+<%= @user.profile.twitter rescue "I'm not on twitter." %>
+
+<h6>Website:</h6>
+<%= @user.profile.website rescue "I don't have a personal website." %>

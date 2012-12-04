@@ -12,22 +12,22 @@
     <% for exchange in current_user.exchanges %>
       <div class="exchange">
         <h4><%= exchange.name %></h4>
-        <p><%= markdown exchange.summary %></p>
         <h5><%= exchange.call_to_action %></h5>
-        <% if exchange.state == "signup" %>
-          <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
-        <% end %>
         <% if exchange.state == "matched" %>
           <% if current_user.your_match(exchange) %>
-            <p>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %></p>
+            <h6>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %></h6>
           <% else %>
             <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
           <% end %>
         <% end %>
+        <p><%= markdown exchange.summary %></p>
+        <% if exchange.state == "signup" %>
+          <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
+        <% end %>
       </div>
     <% end %>
   <% else %>
-    <p>You have not signed up for any exchanges!</p>
+    <p>You have not signed up for any gift exchanges! Sign up for one of the exchanges listed here.</p>
   <% end %>
 </section>
 
@@ -42,7 +42,5 @@
       </div>
     <% end %>
   </section>
-<% else %>
-  <p>Looks like there aren't any other exchanges you can sign up for at this time.</p>
 <% end %>
 </div>
