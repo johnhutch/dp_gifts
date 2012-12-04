@@ -1,10 +1,10 @@
 <h2><%= @user.name %></h2>
 <% @page_title = @user.name %>
 
-<% unless @user.profile.nil? %>
+<% unless @user.profile.nil %>
   <h5>Address</h5>
   <%= @user.profile.address %>
 
   <h5>Bio:</h5>
-  <%= @user.profile.bio %>
+  <%= markdown @user.profile.bio %>
 <% end %>

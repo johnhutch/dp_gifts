@@ -18,7 +18,11 @@
           <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
         <% end %>
         <% if exchange.state == "matched" %>
-          <p>Here's your match:</p>
+          <% if current_user.your_match(exchange) %>
+            <p>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %></p>
+          <% else %>
+            <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
+          <% end %>
         <% end %>
       </div>
     <% end %>

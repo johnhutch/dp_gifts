@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
     has_many :photos
     has_one :profile
     has_and_belongs_to_many :exchanges
+    has_many :matchups
+    has_many :matches, :through => :matchups
 
     before_create :build_profile
     after_create :set_initial_roles
@@ -16,7 +18,7 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable
 
     # Setup accessible (or protected) attributes for your model
-    attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :remember_me
+    attr_accessible :name, :email, :password, :password_confirmation, :confirmed_at, :remember_me, :matchup
 
     def profile_incomplete?
       self.profile.address.nil? && self.profile.bio.nil?
@@ -24,6 +26,10 @@ class User < ActiveRecord::Base
 
     def potential_exchanges
       potential_exchanges = Exchange.with_state(:signup) - self.exchanges
+    end
+
+    def your_match(exchange_id)
+      self.matches.first
     end
 
     # Accessor function for retrieving a user's roles
@@ -63,8 +69,8 @@ class User < ActiveRecord::Base
         end
     end
 
-    def matchup
-
+    def matchup(match, exchange)
+      self.matchups << Matchup.create(exchange_id: exchange.id, match_id: match.id)
     end
 
     private

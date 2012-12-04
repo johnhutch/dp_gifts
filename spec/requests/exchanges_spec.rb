@@ -29,7 +29,7 @@ describe "Exchanges" do
   end
 
   describe "GET /exchange/:id/trigger_matchups" do
-    it "switches the exchange state to matched" do
+    it "switches the exchange state to matched", :js => true do
       user.exchanges << exchange
       user2.exchanges << exchange
       user3.exchanges << exchange
@@ -42,6 +42,16 @@ describe "Exchanges" do
       click_link "Run matchups and notify users"
       page.should have_content("Close matchup")
       ActionMailer::Base.deliveries.last.bcc.should == [user.email, user2.email, user3.email, user4.email, user5.email, user6.email]
+
+      visit dashboard_path
+      page.should_not have_content("your match:")
+
+      click_link admin.name
+      click_link "Sign out"
+
+      login(user)
+      visit dashboard_path
+      page.should have_content("your match:")
     end
   end
 

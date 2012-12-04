@@ -1,5 +1,7 @@
 class Exchange < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_many :matchups
+  has_many :matches, :through => :matchups
 
   attr_accessible :description, :name, :state, :summary
 
@@ -51,6 +53,15 @@ class Exchange < ActiveRecord::Base
   private
 
   def notify_matches
+    match_array = self.users.sort_by { rand }
+    match_array.each_with_index {|user, i|
+      if i < (match_array.size - 1)
+        user.matchup(match_array[i+1], self)
+      else
+        user.matchup(match_array[0], self)
+      end
+    }
+
     Notifier.matched(self).deliver
   end
 
