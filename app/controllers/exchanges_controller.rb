@@ -1,17 +1,6 @@
 class ExchangesController < ApplicationController
   load_and_authorize_resource
 
-  # GET /exchanges
-  # GET /exchanges.json
-  def index
-    @exchanges = Exchange.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @exchanges }
-    end
-  end
-
   # GET /exchanges/1
   # GET /exchanges/1.json
   def show
@@ -126,7 +115,7 @@ class ExchangesController < ApplicationController
     @exchange.destroy
 
     respond_to do |format|
-      format.html { redirect_to exchanges_url }
+      format.html { redirect_to admin_url }
       format.json { head :no_content }
     end
   end
