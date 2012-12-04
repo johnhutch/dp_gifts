@@ -40,6 +40,8 @@ describe "Exchanges" do
 
       visit admin_path
       click_link "Run matchups and notify users"
+      page.should have_content("Close matchup")
+      ActionMailer::Base.deliveries.last.bcc.should == [user.email, user2.email, user3.email, user4.email, user5.email, user6.email]
     end
   end
 

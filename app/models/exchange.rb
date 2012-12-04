@@ -51,6 +51,7 @@ class Exchange < ActiveRecord::Base
   private
 
   def notify_matches
+    Notifier.matched(self).deliver
   end
 
   def notify_closure
