@@ -25,11 +25,11 @@
     <% if f.object.encrypted_password.present? %>
         <div class="field"><%= f.label :current_password %>
             <%= f.password_field :current_password %><br />
-            <i>(we need your current password to confirm your changes)</small>
+            <small>(we need your current password to confirm your changes)</small>
         </div>
     <% end %>
 
-    <div class="field"<%= f.submit "Update my login info" %></div>
+    <div class="field"><%= f.submit "Update my login info", :class => "btn" %></div>
 <% end %>
 
 <h3>Cancel my account</h3>
