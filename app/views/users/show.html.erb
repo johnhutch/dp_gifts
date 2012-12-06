@@ -2,13 +2,13 @@
 <% @page_title = @user.name %>
 
 <h5>Address</h5>
-<%= @user.profile.address rescue "Not filled out" %>
+<%= markdown @user.profile.address rescue "Not filled out" %>
 
 <h5>Bio:</h5>
-<%= @user.profile.bio rescue "Not filled out" %>
+<%= markdown @user.profile.bio rescue "Not filled out" %>
 
 <h5>Things I like, dislike, and am maybe I'm allergic to:</h5>
-<%= @user.profile.likes rescue "Not filled out" %>
+<%= markdown @user.profile.likes rescue "Not filled out" %>
 
 <h6>Amazon.com Wishlist</h6>
 <%= @user.profile.amazon_wishlist rescue "I don't have an amazon wishlist" %>
