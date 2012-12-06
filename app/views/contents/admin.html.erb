@@ -2,6 +2,8 @@
 
 <p>We have <%= User.all.count %> registered users on DoublePrimeGiftExchange.comg</p>
 
+<%= link_to "View All Users", users_path, :class => "btn" %>
+
 <%= link_to "Create a new exchange", new_exchange_path, :class => "btn btn-primary" %>
 
 <section id="exchanges">
