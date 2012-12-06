@@ -5,4 +5,12 @@
   </header>
   <%= markdown @exchange.summary %>
 
+  <% if current_user.role? :admin %>
+    <h4>Participating Users</h4>
+    <ul>
+    <% for user in @exchange.users %>
+      <li><%= link_to user.name, user %></li>
+    <% end %>
+    </ul>
+  <% end %>
 </section>

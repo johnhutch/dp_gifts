@@ -39,6 +39,8 @@ describe "Exchanges" do
       login(admin)
 
       visit admin_path
+      page.should have_content("7 registered users")
+      page.should have_content("6 participants")
       click_link "Run matchups and notify users"
       page.should have_content("Close matchup")
       ActionMailer::Base.deliveries.last.bcc.should == [user.email, user2.email, user3.email, user4.email, user5.email, user6.email]
