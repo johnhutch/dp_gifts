@@ -11,10 +11,10 @@
 <%= markdown @user.profile.likes rescue "Not filled out" %>
 
 <h6>Amazon.com Wishlist</h6>
-<%= @user.profile.amazon_wishlist rescue "I don't have an amazon wishlist" %>
+<%= link_to @user.profile.amazon_wishlist, @user.profile.amazon_wishlist, :target => '_blank' rescue "I don't have an amazon wishlist" %>
 
 <h6>Twitter:</h6>
-<%= @user.profile.twitter rescue "I'm not on twitter." %>
+<%= link_to "@" + @user.profile.twitter, "http://www.twitter.com/" + @user.profile.twitter, :target => '_blank' rescue "I'm not on twitter." %>
 
 <h6>Website:</h6>
-<%= @user.profile.website rescue "I don't have a personal website." %>
+<%= link_to @user.profile.website, @user.profile.website, :target => '_blank' rescue "I don't have personal website" %>
