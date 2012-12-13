@@ -6,11 +6,32 @@
   <%= markdown @exchange.summary %>
 
   <% if current_user.role? :admin %>
-    <h4>Participating Users</h4>
-    <ul>
-    <% for user in @exchange.users %>
-      <li><%= link_to user.name, user %></li>
-    <% end %>
-    </ul>
+    <% non_participants = User.all - @exchange.users %>
+
+    <section id="participating_users" class="span-9">
+      <h4>Participating Users</h4>
+      <ul>
+      <% for user in @exchange.users %>
+        <li><%= link_to user.name, user %>
+          <% if user.profile.address.nil? %>
+            <strong>No profile</strong>.
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+
+    <section id="nonparticipating_users" class="span-9">
+      <h4>Non-participating Users</h4>
+      <ul>
+      <% for user in non_participants %>
+        <li><%= link_to user.name, user %>
+          <% if user.profile.address.nil? %>
+            <strong>No profile</strong>.
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
   <% end %>
 </section>

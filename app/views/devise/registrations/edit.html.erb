@@ -1,10 +1,9 @@
-<h1>Edit <%= resource_name.to_s.humanize %></h1>
-
 <section id="profile" class="clearfix">
     <h2>Your Profile</h2>
     <%= render :partial => 'profiles/form', :locals => { :p => current_user.profile } %>
 </section>
 
+<h2>Your Login Info</h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 

@@ -13,9 +13,9 @@
     <% for exchange in Exchange.with_state(:signup) %>
       <div class="exchange span4">
         <%= link_to exchange.name, exchange %>: <%= exchange.users.count %> participants.<br />
-        <%= link_to "Run matchups and notify users", trigger_matchups_exchange_path(exchange), :class => "btn btn-mini" %><br />
+        <%= link_to "Run matchups and notify users", trigger_matchups_exchange_path(exchange), :class => "btn btn-mini", data: { confirm: "Are you sure you want to run matchups for #{exchange.name}?" } %><br />
         <%= link_to 'Edit', edit_exchange_path(exchange), :class => "btn btn-mini" %><br />
-        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete #{exchange.name}?' } %>
+        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete #{exchange.name}?" } %>
       </div>
     <% end %>
   </div>
@@ -27,7 +27,7 @@
         <%= link_to exchange.name, exchange %>: <%= exchange.users.count %> participants.<br />
         <%= link_to "Close matchup", close_exchange_path(exchange), :class => "btn btn-mini" %><br />
         <%= link_to 'Edit', edit_exchange_path(exchange), :class => "btn btn-mini" %><br />
-        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete #{exchange.name}?' } %>
+        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete #{exchange.name}?" } %>
       </div>
     <% end %>
   </div>
@@ -38,7 +38,7 @@
       <div class="exchange span4">
         <%= link_to exchange.name, exchange %>: <%= exchange.users.count %> participants.<br />
         <%= link_to 'Edit', edit_exchange_path(exchange), :class => "btn btn-mini" %><br />
-        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete #{exchange.name}?' } %>
+        <%= link_to 'Destroy', exchange, :class => "btn btn-mini btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete #{exchange.name}?" } %>
       </div>
     <% end %>
   </div>
