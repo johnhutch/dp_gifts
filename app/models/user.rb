@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
       potential_exchanges = Exchange.with_state(:signup) - self.exchanges
     end
 
-    def your_match(exchange_id)
-      self.matches.first
+    def your_match(exchange)
+       matchups.where(exchange_id: exchange.id).first.try(:match)
     end
 
     # Accessor function for retrieving a user's roles
