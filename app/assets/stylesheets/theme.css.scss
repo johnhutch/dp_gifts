@@ -144,3 +144,4 @@ form.new_post textarea {height: 175px;}
 #post .photo img, 
 #posts .post img {border: 2px solid #ccc;@include box-shadow($under_shadow); }
 #posts .post img {float: right; margin: .5em 0 .5em 1em;} 
+.comment {margin-bottom: 1em;}
