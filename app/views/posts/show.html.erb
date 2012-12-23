@@ -1,8 +1,12 @@
 <article id="post">
   <h3><%= @post.title %></h3>
-  <div id="byline">Posted by <%= @post.user.email %> <span id="published"><%= published?(@post) %></span></div>
+  <div id="byline">Posted by <%= @post.user.name %> <span id="published"><%= published?(@post) %></span></div>
   <% if @post.exchange %>
     <div id="exchange"><%= @post.exchange.name %></div>
+  <% end %>
+  <% if current_user && ((current_user.role? :admin) || current_user.posts.include?(@post))  %>
+    <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-mini" %>
+    <%= link_to 'Delete', post_path(@post), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger btn-mini"  %>
   <% end %>
 
   <div class="row">
