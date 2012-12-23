@@ -11,6 +11,7 @@ describe "Exchanges" do
   let(:exchange) {FactoryGirl.create(:exchange)}
   let(:exchange1) {FactoryGirl.create(:exchange)}
   let(:exchange2) {FactoryGirl.create(:exchange)}
+  let(:photo) { FactoryGirl.create(:photo, user: user) }
 
   describe "POST /exchange" do
     it "lets an admin create a new exchange" do
@@ -54,11 +55,48 @@ describe "Exchanges" do
       login(user)
       visit dashboard_path
       page.should have_content("your match:")
+      click_link user.your_match(exchange).name
+      page.should have_content "Address"
+      visit user_path(admin)
+      page.should_not have_content "Address"
     end
   end
 
   describe "GET /exchange/:id/close_exchange" do
-    it "switches the exchange state to closed" do
+    it "switches the exchange state to closed", :js => true do
+      user.exchanges << exchange
+      user2.exchanges << exchange
+      user3.exchanges << exchange
+      user4.exchanges << exchange
+      user5.exchanges << exchange
+      user6.exchanges << exchange
+      login(admin)
+
+      visit admin_path
+      click_link "Run matchups and notify users"
+      page.should have_content("Close matchup")
+      click_link "Close matchup"
+      ActionMailer::Base.deliveries.last.bcc.should == [user.email, user2.email, user3.email, user4.email, user5.email, user6.email]
+
+      click_link admin.name
+      click_link "Sign out"
+
+      login(user)
+      visit dashboard_path
+      page.should have_content("Receive your gift?")
+      click_link "Post my gift on the blog"
+      fill_in "Title", :with => "A Sample post title"
+      fill_in "Body", :with => "this is what the post says"
+      click_link I18n.t('links.add_a_photo')
+      fill_in "Photo Title", :with => "A sample photo title"
+      fill_in "Photo Caption", :with => "this is the photo caption"
+      attach_file("File Upload","#{Rails.root}/spec/samples/hutchhead.png")
+      click_button I18n.t('buttons.create_post')
+      page.should have_content("A Sample post title")
+      page.should have_content("A sample photo title")
+      page.should have_content("this is the photo caption")
+      page.should have_css('img', :src => photo.image.url(:thumb))
+      page.should have_content(exchange.name)
     end
   end
 

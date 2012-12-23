@@ -1,6 +1,9 @@
 <article id="post">
   <h3><%= @post.title %></h3>
-  <div id="byline">Posted by <%= @post.user.email %> <%= published?(@post) %></div>
+  <div id="byline">Posted by <%= @post.user.email %> <span id="published"><%= published?(@post) %></span></div>
+  <% if @post.exchange %>
+    <div id="exchange"><%= @post.exchange.name %></div>
+  <% end %>
   
   <% for photo in @post.photos %>
     <h4><%= photo.title %></h4>

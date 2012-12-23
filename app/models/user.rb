@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
        matchups.where(exchange_id: exchange.id).first.try(:match)
     end
 
+    def is_matched_with?(user)
+       matches.include?(user)
+    end
+
     # Accessor function for retrieving a user's roles
     def role?(role)
         return !!self.roles.find_by_name(role.to_s)

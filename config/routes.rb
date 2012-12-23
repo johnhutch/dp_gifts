@@ -6,6 +6,7 @@ DPGifts::Application.routes.draw do
             get :trigger_matchups
             get :close
             get :quit
+            get :post_gift
         end
     end
 

@@ -15,7 +15,9 @@ class Ability
   def nobody
     can :read, [Content, User, Post, Photo, Comment, Exchange]
     can [:front, :dashboard, :contact, :how_it_works], Content
-    can [:sign_up, :quit], Exchange
+    can [:sign_up, :quit, :post_gift], Exchange
+    can :create, Post
+    can [:update, :publish, :destroy], Post, :user_id => @user.id
   end
 
   def commenter

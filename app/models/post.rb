@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title, :body
   
-  attr_accessible :title, :body, :photos_attributes
+  attr_accessible :title, :body, :photos_attributes, :exchange_id
 
   def publish_me
     self.published = true

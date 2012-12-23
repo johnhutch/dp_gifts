@@ -60,6 +60,16 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def post_gift
+    @exchange = Exchange.find(params[:id])
+    @post = current_user.posts.build(:exchange_id => @exchange.id)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @post }
+    end
+  end
+
   # GET /exchanges/new
   # GET /exchanges/new.json
   def new

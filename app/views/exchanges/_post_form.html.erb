@@ -1,0 +1,33 @@
+<%= nested_form_for(@post, :html => { :multipart => true }) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="post_error_explanation" class="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <%= f.fields_for :photos do |p| %>
+    <%= render :partial => 'posts/photo_fields', :locals => { :p => p } %>
+  <% end %>
+  <div class="add button"><%= f.link_to_add "Add a photo", :photos %></div>
+
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.hidden_field :exchange_id %>
+  <div class="actions">
+    <%= f.submit 'data-disable-with' => "Saving..." %>
+  </div>
+<% end %>

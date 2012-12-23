@@ -1,8 +1,10 @@
 <h2><%= @user.name %></h2>
 <% @page_title = @user.name %>
 
-<h5>Address</h5>
-<%= markdown @user.profile.address rescue "Not filled out" %>
+<% if current_user.is_matched_with?(@user) %>
+  <h5>Address</h5>
+  <%= markdown @user.profile.address rescue "Not filled out" %>
+<% end %>
 
 <h5>Bio:</h5>
 <%= markdown @user.profile.bio rescue "Not filled out" %>

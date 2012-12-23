@@ -24,6 +24,11 @@
           <p><%= markdown exchange.summary %></p>
           <%= link_to "Quit this exchange", quit_exchange_path(exchange), :class => "btn btn-mini btn-danger" %>
         <% end %>
+        <% if exchange.state == "closed" %>
+          <p>This exchange is now <strong>closed</strong>. You should be receiving your gift shortly, if you haven't already.</p>
+          <h6>Receive your gift? Let us know on the Gift Blog!</h6>
+          <%= link_to "Post my gift on the blog", post_gift_exchange_path(exchange), :class => "btn btn-primary" %>
+        <% end %>
       </div>
     <% end %>
   <% else %>
