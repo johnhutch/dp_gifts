@@ -141,4 +141,6 @@ fieldset.photo {margin-bottom:1em; padding-left: 1em; border-left: 4px solid #cc
 form.new_post a.add {margin-bottom: 1em;}
 form.new_post textarea {height: 175px;}
 
-#posts .post img {float: right; margin: .5em 0 .5em 1em; border: 1px solid #333;@include box-shadow($under_shadow); }
+#post .photo img, 
+#posts .post img {border: 2px solid #ccc;@include box-shadow($under_shadow); }
+#posts .post img {float: right; margin: .5em 0 .5em 1em;} 
