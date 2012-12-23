@@ -4,14 +4,18 @@
   <% if @post.exchange %>
     <div id="exchange"><%= @post.exchange.name %></div>
   <% end %>
-  
-  <% for photo in @post.photos %>
-    <h4><%= photo.title %></h4>
 
-    <a href="<%= photo.image.url(:medium) %>"><%= image_tag photo.image.url(:thumb) %></a>
+  <div class="row">
+    <% for photo in @post.photos %>
+      <div class="photo span3">
+        <h4><%= photo.title %></h4>
 
-    <%= markdown photo.caption %>
-  <% end %>
+        <a href="<%= photo.image.url(:medium) %>"><%= image_tag photo.image.url(:thumb) %></a>
+
+        <%= markdown photo.caption %>
+      </div>
+    <% end %>
+  </div>
   <%= markdown @post.body %>
 </article>
 

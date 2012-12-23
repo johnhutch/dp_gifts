@@ -1,9 +1,5 @@
 <fieldset class="photo">
-  <h3>Photo:</h3>
-  <div class="field">
-    <%= p.label :title, "Photo Title" %>
-    <%= p.text_field :title %>
-  </div>
+  <h4>Photo:</h4>
   <div class="field">
     <%= p.label :image, "File Upload" %>
     <%= p.file_field :image %>
@@ -13,7 +9,7 @@
     <%= p.text_field :caption %>
   </div>
   <div class="field destroy">
-    <%= p.link_to_remove "Remove this photo" %>
+    <%= p.link_to_remove "Remove this photo", :class => "btn btn-danger"  %>
   </div>
 
 </fieldset>

@@ -1,9 +1,13 @@
-<section id="posts" class="posts">
 <h3>Posts</h3>
+<section id="posts" class="row posts">
 <% @posts.each do |post| %>
-  <article class="post">
+  <article class="post span4">
+    <% if post.photos.first %>
+      <a href="/posts/<%= post.id %>"><%= image_tag post.photos.first.image.url(:thumb) %></a>
+      
+    <% end %>
     <h4><%= post.title %></h4>
-    <%= markdown post.body %>
+    <%= markdown truncate(post.body, :length => 250, :omission => '...') %>
     <p class="readmore"><%= link_to 'Read More', post %></p>
   </article>
 <% end %>

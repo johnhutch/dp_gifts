@@ -19,7 +19,7 @@
   <%= f.fields_for :photos do |p| %>
     <%= render :partial => 'photo_fields', :locals => { :p => p } %>
   <% end %>
-  <div class="add button"><%= f.link_to_add "Add a photo", :photos %></div>
+  <%= f.link_to_add "Add a photo", :photos, :class => "add btn" %>
 
 
   <div class="field">
@@ -27,6 +27,6 @@
     <%= f.text_area :body %>
   </div>
   <div class="actions">
-    <%= f.submit 'data-disable-with' => "Saving..." %>
+    <%= f.submit 'data-disable-with' => "Saving...", :class => "submit btn btn-primary"  %>
   </div>
 <% end %>

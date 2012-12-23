@@ -66,6 +66,7 @@ class Exchange < ActiveRecord::Base
   end
 
   def notify_closure
+    Notifier.closed(self).deliver
   end
 
 end
