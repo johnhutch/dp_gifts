@@ -10,7 +10,7 @@
       <div class="photo span3">
         <h4><%= photo.title %></h4>
 
-        <a href="<%= photo.image.url(:medium) %>"><%= image_tag photo.image.url(:thumb) %></a>
+        <a href="<%= photo.image.url %>"><%= image_tag photo.image.url(:medium) %></a>
 
         <%= markdown photo.caption %>
       </div>

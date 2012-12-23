@@ -38,11 +38,9 @@ describe "Photos" do
       login(uploader)
 
       visit new_photo_path
-      fill_in "Title", :with => "A Sample photo title"
       fill_in "Caption", :with => "this is the photo caption"
       attach_file("Image","#{Rails.root}/spec/samples/hutchhead.png")
       click_button I18n.t('buttons.create_photo')
-      page.should have_content("A Sample photo title")
       page.should have_content("this is the photo caption")
       page.should have_css('img', :src => photo.image.url(:thumb))
       page.should have_content(uploader.name)
