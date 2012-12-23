@@ -7,6 +7,7 @@
       
     <% end %>
     <h4><%= post.title %></h4>
+    <h6>by <%= post.user.name %></h6>
     <%= markdown truncate(post.body, :length => 250, :omission => '...') %>
     <p class="readmore"><%= link_to 'Read More', post %></p>
   </article>
