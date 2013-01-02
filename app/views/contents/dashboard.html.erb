@@ -26,6 +26,12 @@
         <% end %>
         <% if exchange.state == "closed" %>
           <p>This exchange is now <strong>closed</strong>. You should be receiving your gift shortly, if you haven't already.</p>
+          <% if current_user.your_match(exchange) %>
+              <p>If you have not yet shipped your gift, you are late! Please do so as soon as possible!</p>
+            <h6>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %> (click to read their info)</h6>
+          <% else %>
+            <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
+          <% end %>
           <h6>Receive your gift? Let us know on the Gift Blog!</h6>
           <%= link_to "Post my gift on the blog", post_gift_exchange_path(exchange), :class => "btn btn-primary" %>
         <% end %>
