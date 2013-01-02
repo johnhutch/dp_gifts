@@ -21,14 +21,16 @@
 <h6>Website:</h6>
 <%= link_to @user.profile.website, @user.profile.website, :target => '_blank' rescue "I don't have personal website" %>
 
-<% if current_user && current_user.role? :admin %>
-  <% for exchange in currrent_user.excahnges %>
-    <h5>Matches</h5>
-    <h6><%= exchange.name %></h6>
-    <% if current_user.your_match(exchange) %>
-      <h6>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %> (click to read their info)</h6>
-    <% else %>
-      <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
+<% if user_signed_in? %>
+  <% if current_user.role? :admin %>
+    <% for exchange in currrent_user.excahnges %>
+      <h5>Matches</h5>
+      <h6><%= exchange.name %></h6>
+      <% if current_user.your_match(exchange) %>
+        <h6>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %> (click to read their info)</h6>
+      <% else %>
+        <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
