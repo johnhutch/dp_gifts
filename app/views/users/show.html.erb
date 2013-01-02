@@ -23,7 +23,7 @@
 
 <% if user_signed_in? %>
   <% if current_user.role? :admin %>
-    <% for exchange in current_user.excahnges %>
+    <% for exchange in current_user.exchanges %>
       <h5>Matches</h5>
       <h6><%= exchange.name %></h6>
       <% if current_user.your_match(exchange) %>
