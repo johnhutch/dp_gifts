@@ -23,13 +23,13 @@
 
 <% if user_signed_in? %>
   <% if current_user.role? :admin %>
-    <% for exchange in current_user.exchanges %>
+    <% for exchange in @user.exchanges %>
       <h5>Matches</h5>
       <h6><%= exchange.name %></h6>
-      <% if current_user.your_match(exchange) %>
-        <h6>Here's your match: <%= link_to current_user.your_match(exchange).name, user_path(current_user.your_match(exchange)) %> (click to read their info)</h6>
+      <% if @user.your_match(exchange) %>
+        <p>Matched with: <%= link_to @user.your_match(exchange).name, user_path(@user.your_match(exchange)) %></p>
       <% else %>
-        <p>We're very sorry, it seems you somehow didn't get matched. Please alert the admin.</p>
+        <p>It seems this person doesn't have a match...</p>
       <% end %>
     <% end %>
   <% end %>
