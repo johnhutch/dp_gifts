@@ -21,7 +21,7 @@
 <h6>Website:</h6>
 <%= link_to @user.profile.website, @user.profile.website, :target => '_blank' rescue "I don't have personal website" %>
 
-<% if current_user.role? :admin %>
+<% if current_user && current_user.role? :admin %>
   <% for exchange in currrent_user.excahnges %>
     <h5>Matches</h5>
     <h6><%= exchange.name %></h6>
