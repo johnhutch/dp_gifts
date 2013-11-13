@@ -1,7 +1,7 @@
 Double Prime Game Night
 ========================
 
-Current version: Rails 3.2.8
+Current version: Rails 3.2.15
 
 DP Games currently includes:
 --------------------------

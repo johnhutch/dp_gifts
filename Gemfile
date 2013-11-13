@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.15'
 
 group :assets do
-gem 'sass-rails',   '~> 3.2.5'
-gem 'coffee-rails', '~> 3.2.2'
-gem 'uglifier', '>= 1.2.6'
+  gem 'sass-rails',   '~> 3.2.6'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 gem 'jquery-rails', '~> 2.0.2'
@@ -31,12 +31,19 @@ group :development, :test do
     gem 'sqlite3'
     gem 'rspec-rails'
     gem "letter_opener"
+    gem 'thin'
+    gem 'better_errors'
+    gem 'coderay', '~> 1.0.5' # pinned at 1.0.5 to avoid conflict between better_errors and guard http://stackoverflow.com/questions/19322183/guard-giving-uninitialized-constant-listenturnstile-nameerror-error
+    gem 'binding_of_caller'
+    gem 'meta_request'
 end
 
 group :test do
     gem 'factory_girl'
     gem 'factory_girl_rails', :require => false
-    gem 'capybara-webkit'
+    gem 'capybara'
+    gem 'selenium-webdriver'
+    gem 'guard', '>=2.1.0'
     gem 'guard-rspec'
     gem 'launchy'
     gem 'rb-fsevent' # mac-only gem for guard auto-detect. remove if on another OS

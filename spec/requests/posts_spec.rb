@@ -47,7 +47,7 @@ describe "Posts" do
       click_button I18n.t('buttons.create_post')
       page.should have_content("A Sample post title")
       page.should have_content("this is the photo caption")
-      page.should have_css('img', :src => photo.image.url(:thumb))
+      page.should have_xpath("//img[contains(@src,\"hutchhead.png\")]") 
     end
 
     it "should indicate its published date after post is published" do
