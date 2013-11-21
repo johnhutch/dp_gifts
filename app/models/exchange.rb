@@ -33,11 +33,11 @@ class Exchange < ActiveRecord::Base
 
     state :closed do
       def state_description
-        "This gift exchange is now close. Check the blog for pictures of some of the awesome gifts people received!"
+        "This gift exchange is now closed. Check the blog for pictures of some of the awesome gifts people received!"
       end
 
       def call_to_action
-        "This gift exchange is now close. Have you posted pics of your gift yet?"
+        "This gift exchange is now closed. Have you posted pics of your gift yet?"
       end
     end
 
