@@ -10,7 +10,7 @@ end
 
 gem 'jquery-rails', '~> 2.0.2'
 gem 'mysql2'
-gem 'capistrano'
+gem 'capistrano', '~>2.13.5'
 gem 'json'
 gem 'therubyracer' # added to avoid javascript errors on deploy
 

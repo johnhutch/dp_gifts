@@ -64,6 +64,7 @@ DPGifts::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              Settings.mail.address,
     port:                 Settings.mail.port,
+    domain:               Settings.mail.domain,
     user_name:            Settings.mail.user_name,
     password:             Settings.mail.password,
     authentication:       Settings.mail.authentication,
